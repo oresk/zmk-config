@@ -13,9 +13,36 @@
 #define LOWER   1
 #define RAISE   2
 #define ADJUST	3
+#define KICAD	4
+
+
+
 
 
 / {
+
+   macros {
+        kicad_group: kicad_group {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LSHFT>
+                , <&macro_tap &kp G>
+                , <&macro_release &kp LSHFT>
+                ;
+        };
+        kicad_ungroup: kicad_ungroup {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LSHFT>
+                , <&macro_tap &kp U>
+                , <&macro_release &kp LSHFT>
+                ;
+        };
+    };
+
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -57,7 +84,7 @@
 //                   `----------------------------'           '------''--------------------'
 //
             bindings = <
-&none 	   &none            &none             &none             &none        &none                        &none     &none     &none    &none     &none     &none
+&to KICAD  &none            &none             &none             &none        &none                        &none     &none     &none    &none     &none     &none
 &kp F1     &kp F2           &kp F3            &kp F4            &kp F5       &kp F6                       &kp F7    &kp F8    &kp F9   &kp F10   &kp F11   &kp F12
 &kp GRAVE  &kp EXCL         &kp AT            &kp HASH          &kp DOLLAR   &kp PRCNT                    &kp CARET &kp AMPS  &kp STAR &kp LPAR  &kp RPAR  &kp TILDE
 &trans     &ext_power EP_ON &ext_power EP_OFF &ext_power EP_TOG &trans       &trans    &trans   &trans    &trans    &kp MINUS &kp PLUS &kp LBRC  &kp RBRC  &kp PIPE
@@ -110,5 +137,51 @@
                                               &trans            &trans       &none    &trans    &trans    &none     &trans    &trans
             >;
         };
+        kicad_layer {
+// ,-----------------------------------------.                    ,-----------------------------------------.
+// | ESC  |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  |  `   |
+// |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+// |      |      |TR COR|TR SEL|ROTATE|TRACK |                    |      |      |      |      |      |      |
+// |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+// |      |      |      |NT SEL|DELETE|U/GRP |-------.    ,-------|      |      |      |      |      |      |
+// |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
+// |      |      |      |      | VIA  |      |-------|    |-------|      |      |      |      |      |      |
+// `-----------------------------------------/       /     \      \-----------------------------------------'
+//                   |      |      |DFLT  | /  Enter/       \Space \  |      |BackSP| RGUI |
+//                   |      |      |      |/       /         \      \ |      |      |      |
+//                   `----------------------------'           '------''--------------------'
+//	
+            bindings = <
+&kp ESC &kp N1 &kp N2 &kp N3   &kp N4   &kp N5                           	&kp N6     &kp N7   &kp N8    &kp N9  &kp N0   &kp GRAVE
+&none   &none  &kp FSLH &kp U  &kp R   &kp X                           		&none     &none   &none    &none  &none   &none
+&none   &none  &none  &kp GRAVE &kp DEL &mt &kicad_group &kicad_ungroup                           &none     &none   &none    &none  &none   &none
+&none   &none  &none  &nonw    &kp V   &none       &none       &none      &none     &none   &none    &none  &none   &none
+                      &none    &none   &to DEFAULT &kp RET        &none      &none     &none   &none
+            >;
+        };
     };
 };
+/*
+        _layer {
+// ,-----------------------------------------.                    ,-----------------------------------------.
+// |      |      |      |      |      |      |                    |      |      |      |      |      |      |
+// |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+// |      |      |      |      |      |      |                    |      |      |      |      |      |      |
+// |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+// |      |      |      |      |      |      |-------.    ,-------|      |      |      |      |      |      |
+// |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
+// |      |      |      |      |      |      |-------|    |-------|      |      |      |      |      |      |
+// `-----------------------------------------/       /     \      \-----------------------------------------'
+//                   |      |      |      | /       /       \      \  |      |      |      |
+//                   |      |      |      |/       /         \      \ |      |      |      |
+//                   `----------------------------'           '------''--------------------'
+//	
+            bindings = <
+&none   &none  &none  &none    &none   &none                           &none     &none   &none    &none  &none   &none
+&none   &none  &none  &none    &none   &none                           &none     &none   &none    &none  &none   &none
+&none   &none  &none  &none    &none   &none                           &none     &none   &none    &none  &none   &none
+&none   &none  &none  &nonw    &none   &none    &none       &none      &none     &none   &none    &none  &none   &none
+                      &none    &none   &none    &none       &none      &none     &none   &none
+            >;
+        };
+*/
