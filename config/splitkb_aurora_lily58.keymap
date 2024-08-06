@@ -15,10 +15,6 @@
 #define ADJUST	3
 #define KICAD	4
 
-
-
-
-
 / {
 
     keymap {
@@ -121,20 +117,20 @@
 // |------+------+------+------+------+------|                    |------+------+------+------+------+------|
 // |      |      |TR COR|TR SEL|ROTATE|TRACK |                    |      |      |      |      |      |      |
 // |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-// |      |      |      |NT SEL|DELETE|U/GRP |-------.    ,-------|      |      |      |      |      |      |
+// | CTRL |CPYPST|      |NT SEL|DELETE|U/GRP |-------.    ,-------|      |      |      |      |      |      |
 // |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
-// |      |      |      |      | VIA  |      |-------|    |-------|      |      |      |      |      |      |
+// |SHIFT |      |      |      | VIA  |RB ZON|-------|    |-------|      |      |      |      |      |      |
 // `-----------------------------------------/       /     \      \-----------------------------------------'
 //                   |      | LGUI |DFLT  | /  Enter/       \Space \  |      |BackSP| RGUI |
 //                   |      |      |      |/       /         \      \ |      |      |      |
 //                   `----------------------------'           '------''--------------------'
 //	
             bindings = <
-&kp ESC &kp N1 &kp N2 &kp N3   &kp N4   &kp N5                           	&kp N6     &kp N7   &kp N8    &kp N9  &kp N0   &kp GRAVE
-&none   &none  &kp FSLH &kp U  &kp R    &kp X                           		&none     &none   &none    &none  &none   &none
-&none   &none  &none  &kp GRAVE &kp DEL &mt LS(G) LS(U)                           &none     &none   &none    &none  &none   &none
-&none   &none  &none  &none    &kp V    &none       &none       &none      &none     &none   &none    &none  &none   &none
-                      &none    &kp LGUI &to DEFAULT &kp RET        &none      &none     &none   &none
+&kp ESC    &kp N1           &kp N2   &kp N3    &kp N4      &kp N5                           	      &kp N6    &kp N7  &kp N8   &kp N9 &kp N0  &kp GRAVE
+&none      &none            &kp FSLH &kp U     &kp R       &kp X                                      &none     &none   &none    &none  &none   &none
+&kp LCTRL  &mt LC(V) LC(C)  &none    &kp GRAVE &kp DEL     &mt LS(G) LS(U)                            &none     &none   &none    &none  &none   &none
+&kp LSHIFT &none            &none    &none     &kp V       &kp B           &none           &none      &none     &none   &none    &none  &none   &none
+                                     &none     &kp LGUI    &to DEFAULT     &kp RET         &none      &none     &none   &none
             >;
         };
     };
