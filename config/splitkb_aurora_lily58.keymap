@@ -21,28 +21,6 @@
 
 / {
 
-   macros {
-        kicad_group: kicad_group {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LSHFT>
-                , <&macro_tap &kp G>
-                , <&macro_release &kp LSHFT>
-                ;
-        };
-        kicad_ungroup: kicad_ungroup {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LSHFT>
-                , <&macro_tap &kp U>
-                , <&macro_release &kp LSHFT>
-                ;
-        };
-    };
-
-
     keymap {
         compatible = "zmk,keymap";
 
@@ -154,7 +132,7 @@
             bindings = <
 &kp ESC &kp N1 &kp N2 &kp N3   &kp N4   &kp N5                           	&kp N6     &kp N7   &kp N8    &kp N9  &kp N0   &kp GRAVE
 &none   &none  &kp FSLH &kp U  &kp R   &kp X                           		&none     &none   &none    &none  &none   &none
-&none   &none  &none  &kp GRAVE &kp DEL &mt <&kicad_group> <&kicad_ungroup>                           &none     &none   &none    &none  &none   &none
+&none   &none  &none  &kp GRAVE &kp DEL &mt LS(G) LS(U)                           &none     &none   &none    &none  &none   &none
 &none   &none  &none  &none    &kp V   &none       &none       &none      &none     &none   &none    &none  &none   &none
                       &none    &none   &to DEFAULT &kp RET        &none      &none     &none   &none
             >;
