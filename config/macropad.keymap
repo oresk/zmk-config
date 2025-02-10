@@ -24,9 +24,9 @@
 
         default_layer {
             bindings = <
-                &kp F17      &kp LS(B) &kp LG(B)
+                &kp F17      &kp LS(B) &kp LG(LA(W))
                 &td0         &kp F21   &kp C_VOL_UP
-                &kp F22      &kp F23   &kp C_VOL_DN
+                &kp F22      &kp F23   &kp LG(LA(Y))
             >;
         };
     };
