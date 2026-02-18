@@ -34,5 +34,5 @@ include:
     shield: settings_reset
 
 # 3x3 macropad
-  - board: xiao_rp2040
+  - board: seeeduino_xiao_rp2040
     shield: macropad
