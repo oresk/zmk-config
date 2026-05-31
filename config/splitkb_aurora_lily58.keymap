@@ -9,6 +9,12 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/ext_power.h>
 
+// Disable the OLED node - nice!view uses Sharp SPI display instead.
+// The splitkb shield enables the OLED by default, causing I2C/SPI pin conflict.
+&oled {
+    status = "disabled";
+};
+
 #define DEFAULT 0
 #define LOWER   1
 #define RAISE   2
